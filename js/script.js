@@ -6,7 +6,7 @@ var app = new Vue({
         key: 'aa17a945ada5e90bc96db53bad6edbc1',
         inputCerca: '',
         arrayFilm: [],
-        arrayTv: [],
+        arrayTv: []
     },
     mounted: function() {
 
