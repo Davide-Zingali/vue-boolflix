@@ -49,3 +49,6 @@ main {
 main i {
     color: yellow;
 }
+main img {
+    width: 20px;
+}
