@@ -5,8 +5,10 @@ var app = new Vue({
         apiFilm: 'https://api.themoviedb.org/3/search/movie/?api_key=',
         key: 'aa17a945ada5e90bc96db53bad6edbc1',
         inputCerca: '',
-        arrayFilm: [],
-        arrayTv: []
+        arrayFilmLocal: [],
+        arrayTvLocal: [],
+        stellaP: '<i class="fas fa-star"></i>',
+        stellaV: '<i class="far fa-star"></i>'
     },
     mounted: function() {
 
@@ -15,12 +17,17 @@ var app = new Vue({
         filtra() {
             const chiamata = axios.get(this.apiFilm + this.key + '&language=it_IT&query=' + this.inputCerca);
             chiamata.then(risposta => {
-                var linkQuery = risposta.data.results;
-                this.arrayFilm = linkQuery;
-                this.inputCerca = '';
-            });
+                var arrayFilmApi = risposta.data.results;
 
-            console.log(this.arrayFilm);
+                var filmModificati = arrayFilmApi.map((item) => {
+                    console.log('singolo film', item);
+                    item.numeroStars = Math.round(item.vote_average / 2);
+                    
+                    return item;
+                });
+                    this.arrayFilmLocal = filmModificati;
+                    this.inputCerca = '';
+            });
         }
     }
 })

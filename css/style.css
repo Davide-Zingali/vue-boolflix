@@ -46,3 +46,6 @@ main {
     display: flex;
     flex-wrap: wrap;
 }
+main i {
+    color: yellow;
+}
