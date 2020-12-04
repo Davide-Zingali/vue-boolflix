@@ -15,23 +15,23 @@ var app = new Vue({
 
     },
     methods: {
-        // filtra() {
-        //     const chiamataFilm = axios.get(this.apiFilm + this.key + '&language=it_IT&query=' + this.inputCerca);
-        //     chiamataFilm.then(risposta => {
-        //         var arrayFilmApi = risposta.data.results;
-
-        //         var filmModificati = arrayFilmApi.map((item) => {
-        //             console.log('singolo film', item);
-        //             item.numeroStars = Math.round(item.vote_average / 2);
-        //             item.bandiera = 'img/' + item.original_language + '.svg';
-                    
-        //             return item;
-        //         });
-        //             this.arrayFilmLocal = filmModificati;
-        //             this.inputCerca = '';
-        //     });
-        // },
         filtra() {
+            // chiamata ricerca film
+            const chiamataFilm = axios.get(this.apiFilm + this.key + '&language=it_IT&query=' + this.inputCerca);
+            chiamataFilm.then(risposta => {
+                var arrayFilmApi = risposta.data.results;
+
+                var filmModificati = arrayFilmApi.map((item) => {
+                    console.log('singolo film', item);
+                    item.numeroStars = Math.round(item.vote_average / 2);
+                    item.bandiera = 'img/' + item.original_language + '.svg';
+                    
+                    return item;
+                });
+                    this.arrayFilmLocal = filmModificati;
+                    this.inputCerca = '';
+            });
+            // chiamata ricerca tv
             const chiamataTv = axios.get(this.apiTv + this.key + '&language=it_IT&query=' + this.inputCerca);
             chiamataTv.then(risposta => {
                 var arrayTvApi = risposta.data.results;
