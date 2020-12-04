@@ -29,10 +29,10 @@
 
                     <p>
                         Lingua test:
-                        <img src="img/arrayFilmLocal[index].original_language.svg" alt="">
+                        <img :src='arrayFilmLocal[index].bandiera' @error="setAltImg" alt="">
                     </p>
 
-                    <!-- bandiera per lingue -->
+                    <!-- bandiera per lingue
                     <p v-if='arrayFilmLocal[index].original_language == "it"'>
                         Lingua:
                         <img src="img/it.svg" alt="">
@@ -40,7 +40,7 @@
                     <p v-else-if='arrayFilmLocal[index].original_language == "en"'>
                         Lingua:
                         <img src="img/en.svg" alt="">
-                    </p>
+                    </p
                     <p v-else-if='arrayFilmLocal[index].original_language == "es"'>
                         Lingua:
                         <img src="img/es.svg" alt="">
@@ -85,7 +85,7 @@
                         Lingua:
                         <img src="img/ko.svg" alt="">
                     </p>
-                    <p v-else>{{arrayFilmLocal[index].original_language}}</p>
+                    <p v-else>{{arrayFilmLocal[index].original_language}}</p> -->
 
                     <!-- stars per voto -->
                     <p v-if='arrayFilmLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>

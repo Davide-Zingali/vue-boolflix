@@ -22,12 +22,16 @@ var app = new Vue({
                 var filmModificati = arrayFilmApi.map((item) => {
                     console.log('singolo film', item);
                     item.numeroStars = Math.round(item.vote_average / 2);
+                    item.bandiera = 'img/' + item.original_language + '.svg';
                     
                     return item;
                 });
                     this.arrayFilmLocal = filmModificati;
                     this.inputCerca = '';
             });
-        }
+        },
+        setAltImg(e) { 
+            e.target.src = "img/ar.svg"
+        } 
     }
 })
