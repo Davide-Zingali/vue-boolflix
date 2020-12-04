@@ -22,9 +22,10 @@ var app = new Vue({
                 var arrayFilmApi = risposta.data.results;
 
                 var filmModificati = arrayFilmApi.map((item) => {
-                    console.log('singolo film', item);
+                    // console.log('singolo film', item);
                     item.numeroStars = Math.round(item.vote_average / 2);
                     item.bandiera = 'img/' + item.original_language + '.svg';
+                    item.poster = 'https://image.tmdb.org/t/p/w342/' + item.poster_path;
                     
                     return item;
                 });
@@ -39,6 +40,7 @@ var app = new Vue({
                 var tvModificati = arrayTvApi.map((item) => {
                     item.numeroStars = Math.round(item.vote_average / 2);
                     item.bandiera = 'img/' + item.original_language + '.svg';
+                    item.poster = 'https://image.tmdb.org/t/p/w342/' + item.poster_path;
 
                     return item;
                 });
@@ -46,8 +48,11 @@ var app = new Vue({
                     this.inputCerca = '';
             });
         },
-        setAltImg(e) { 
-            e.target.src = "img/ar.svg"
-        } 
+        setAltImgBandiera(x) { 
+            x.target.src = "img/ar.svg"
+        },
+        setAltImgPoster(x) {
+            x.target.src = "img/no-img-no.jpg"
+        }
     }
 })

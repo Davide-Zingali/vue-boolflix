@@ -49,6 +49,6 @@ main {
 main i {
     color: yellow;
 }
-main img {
+main p > img {
     width: 20px;
 }

@@ -25,6 +25,9 @@
             <main>
                 <!-- stampo la ricerca per film -->
                 <div class="album" v-for='item, index in arrayFilmLocal'>
+                    <div>
+                        <img :src="arrayFilmLocal[index].poster" alt="no img">
+                    </div>
                     <h3>{{arrayFilmLocal[index].title}}</h3>
                     <h3>{{arrayFilmLocal[index].original_title}}</h3>
 
@@ -99,12 +102,15 @@
 
                 <!-- stampo la ricerca per serie tv -->
                 <div class="album" v-for='item, index in arrayTvLocal'>
+                    <div>
+                        <img :src="arrayTvLocal[index].poster" @error='setAltImgPoster' alt="no img">
+                    </div>
                     <h3>{{arrayTvLocal[index].name}}</h3>
                     <h3>{{arrayTvLocal[index].original_name}}</h3>
 
                     <p>
                         Lingua test:
-                        <img :src='arrayTvLocal[index].bandiera' @error="setAltImg" alt="">
+                        <img :src='arrayTvLocal[index].bandiera' @error="setAltImgBandiera" alt="">
                     </p>
 
                     <p v-if='arrayTvLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
