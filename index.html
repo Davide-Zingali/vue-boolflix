@@ -23,6 +23,7 @@
                 </div>
             </header>
             <main>
+                <!-- stampo la ricerca per film -->
                 <div class="album" v-for='item, index in arrayFilmLocal'>
                     <h3>{{arrayFilmLocal[index].title}}</h3>
                     <h3>{{arrayFilmLocal[index].original_title}}</h3>
@@ -93,6 +94,24 @@
                     <p v-else-if='arrayFilmLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
                     <p v-else-if='arrayFilmLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
                     <p v-else-if='arrayFilmLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
+                    <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
+                </div>
+
+                <!-- stampo la ricerca per serie tv -->
+                <div class="album" v-for='item, index in arrayTvLocal'>
+                    <h3>{{arrayTvLocal[index].name}}</h3>
+                    <h3>{{arrayTvLocal[index].original_name}}</h3>
+
+                    <p>
+                        Lingua test:
+                        <img :src='arrayTvLocal[index].bandiera' @error="setAltImg" alt="">
+                    </p>
+
+                    <p v-if='arrayTvLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
+                    <p v-else-if='arrayTvLocal[index].numeroStars == 2' v-html='stellaP + stellaP + stellaV + stellaV + stellaV'></p>
+                    <p v-else-if='arrayTvLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
+                    <p v-else-if='arrayTvLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
+                    <p v-else-if='arrayTvLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
                     <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
                 </div>
             </main>
