@@ -12,7 +12,19 @@ var app = new Vue({
         stellaV: '<i class="far fa-star"></i>'
     },
     mounted: function() {
+        const chiamataFilm = axios.get(this.apiFilm + this.key + '&language=it_IT&query=casa');
+        chiamataFilm.then(risposta => {
+            var arrayFilmApi = risposta.data.results;
 
+            var filmModificati = arrayFilmApi.map((item) => {
+                item.numeroStars = Math.round(item.vote_average / 2);
+                item.bandiera = 'img/' + item.original_language + '.svg';
+                item.poster = 'https://image.tmdb.org/t/p/w342/' + item.poster_path;
+                    
+                return item;
+            });     
+            this.arrayFilmLocal = filmModificati;
+        });
     },
     methods: {
         filtra() {
