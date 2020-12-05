@@ -25,100 +25,54 @@
             <main>
                 <!-- stampo la ricerca per film -->
                 <div class="album" v-for='item, index in arrayFilmLocal'>
-                    <div>
-                        <img :src="arrayFilmLocal[index].poster" alt="no img">
+                    <img :src="arrayFilmLocal[index].poster" @error='setAltImgPoster' alt="no img">
+                    <div class="absolute">
+                        <h3>Titolo: {{arrayFilmLocal[index].title}}</h3>
+                        <h3>Titolo originale: {{arrayFilmLocal[index].original_title}}</h3>
+                        <h3>
+                            Lingua:
+                            <img :src='arrayFilmLocal[index].bandiera' @error="setAltImgBandiera" alt="">
+                        </h3>
+                        <!-- bandiera per lingue
+                        <p v-if='arrayFilmLocal[index].original_language == "it"'>
+                            Lingua:
+                            <img src="img/it.svg" alt="">
+                        </p>
+                        <p v-else-if='arrayFilmLocal[index].original_language == "en"'>
+                            Lingua:
+                            <img src="img/en.svg" alt="">
+                        </p
+                        <p v-else>{{arrayFilmLocal[index].original_language}}</p> -->
+    
+                        <!-- stars per voto -->
+                        <p v-if='arrayFilmLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
+                        <p v-else-if='arrayFilmLocal[index].numeroStars == 2' v-html='stellaP + stellaP + stellaV + stellaV + stellaV'></p>
+                        <p v-else-if='arrayFilmLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
+                        <p v-else-if='arrayFilmLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
+                        <p v-else-if='arrayFilmLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
+                        <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
+                        <h3>Descrizione: {{item.overview}}</h3>
                     </div>
-                    <h3>{{arrayFilmLocal[index].title}}</h3>
-                    <h3>{{arrayFilmLocal[index].original_title}}</h3>
-
-                    <p>
-                        Lingua test:
-                        <img :src='arrayFilmLocal[index].bandiera' @error="setAltImg" alt="">
-                    </p>
-
-                    <!-- bandiera per lingue
-                    <p v-if='arrayFilmLocal[index].original_language == "it"'>
-                        Lingua:
-                        <img src="img/it.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "en"'>
-                        Lingua:
-                        <img src="img/en.svg" alt="">
-                    </p
-                    <p v-else-if='arrayFilmLocal[index].original_language == "es"'>
-                        Lingua:
-                        <img src="img/es.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "pt"'>
-                        Lingua:
-                        <img src="img/pt.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "fr"'>
-                        Lingua:
-                        <img src="img/fr.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "cs"'>
-                        Lingua:
-                        <img src="img/cs.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "no"'>
-                        Lingua:
-                        <img src="img/no.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "uk"'>
-                        Lingua:
-                        <img src="img/uk.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "zh"'>
-                        Lingua:
-                        <img src="img/zh.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "eu"'>
-                        Lingua:
-                        <img src="img/eu.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "de"'>
-                        Lingua:
-                        <img src="img/de.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "cn"'>
-                        Lingua:
-                        <img src="img/cn.svg" alt="">
-                    </p>
-                    <p v-else-if='arrayFilmLocal[index].original_language == "ko"'>
-                        Lingua:
-                        <img src="img/ko.svg" alt="">
-                    </p>
-                    <p v-else>{{arrayFilmLocal[index].original_language}}</p> -->
-
-                    <!-- stars per voto -->
-                    <p v-if='arrayFilmLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
-                    <p v-else-if='arrayFilmLocal[index].numeroStars == 2' v-html='stellaP + stellaP + stellaV + stellaV + stellaV'></p>
-                    <p v-else-if='arrayFilmLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
-                    <p v-else-if='arrayFilmLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
-                    <p v-else-if='arrayFilmLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
-                    <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
                 </div>
 
                 <!-- stampo la ricerca per serie tv -->
                 <div class="album" v-for='item, index in arrayTvLocal'>
-                    <div>
-                        <img :src="arrayTvLocal[index].poster" @error='setAltImgPoster' alt="no img">
+                    <img :src="arrayTvLocal[index].poster" @error='setAltImgPoster' alt="no img">
+                    <div class="absolute">
+                        <h3>Titolo: {{arrayTvLocal[index].name}}</h3>
+                        <h3>Titolo originale: {{arrayTvLocal[index].original_name}}</h3>
+                        <h3>
+                            Lingua: 
+                            <img :src='arrayTvLocal[index].bandiera' @error="setAltImgBandiera" alt="">
+                        </h3>
+                        <p v-if='arrayTvLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
+                        <p v-else-if='arrayTvLocal[index].numeroStars == 2' v-html='stellaP + stellaP + stellaV + stellaV + stellaV'></p>
+                        <p v-else-if='arrayTvLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
+                        <p v-else-if='arrayTvLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
+                        <p v-else-if='arrayTvLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
+                        <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
+                        <h3>Descrizione: {{arrayTvLocal[index].overview}}</h3>
                     </div>
-                    <h3>{{arrayTvLocal[index].name}}</h3>
-                    <h3>{{arrayTvLocal[index].original_name}}</h3>
-
-                    <p>
-                        Lingua test:
-                        <img :src='arrayTvLocal[index].bandiera' @error="setAltImgBandiera" alt="">
-                    </p>
-
-                    <p v-if='arrayTvLocal[index].numeroStars == 1' v-html='stellaP + stellaV + stellaV + stellaV + stellaV'></p>
-                    <p v-else-if='arrayTvLocal[index].numeroStars == 2' v-html='stellaP + stellaP + stellaV + stellaV + stellaV'></p>
-                    <p v-else-if='arrayTvLocal[index].numeroStars == 3' v-html='stellaP + stellaP + stellaP + stellaV + stellaV'></p>
-                    <p v-else-if='arrayTvLocal[index].numeroStars == 4' v-html='stellaP + stellaP + stellaP + stellaP + stellaV'></p>
-                    <p v-else-if='arrayTvLocal[index].numeroStars == 5' v-html='stellaP + stellaP + stellaP + stellaP + stellaP'></p>
-                    <p v-else v-html='stellaV + stellaV + stellaV + stellaV + stellaV'></p>
                 </div>
             </main>
         </div>

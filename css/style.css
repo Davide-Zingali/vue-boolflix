@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* header */
 header {
     display: flex;
     justify-content: space-between;
@@ -15,7 +17,8 @@ header > h1 {
     color: #E10000;
 }
 header > div > input {
-    min-width: 200px;
+    font-size: 15px;
+    min-width: 300px;
     padding: 4px;
     border: 1px solid white;
     border-radius: 4px;
@@ -30,25 +33,37 @@ header > div > button {
     background-color: red;
     color: white;
 }
+
+/* main */
 .album {
+    position: relative;
     color: white;
     margin: 10px;
     min-width: 200px;
     min-height: 50px;
+    overflow-y: hidden;
 }
 h3, p {
-    background-color: gray;
+    padding: 5px 0;
+    background-color: rgba(000, 000, 000, 0.8);
     border: 1px solid black;
-    max-width: 200px;
-    min-height: 50px;
+    /* max-width: 200px; */
+    /* min-height: 50px; */
 }
 main {
     display: flex;
     flex-wrap: wrap;
+    background-color: black;
 }
 main i {
     color: yellow;
 }
-main p > img {
-    width: 20px;
+main h3 > img {
+    width: 25px;
+}
+.absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 15px;
 }
